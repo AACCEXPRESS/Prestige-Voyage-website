@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const userLang = navigator.language || navigator.userLanguage;
+      let lang = 'en';
+      if (userLang.startsWith('zh')) lang = 'zh';
+      else if (userLang.startsWith('es')) lang = 'es';
+
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
+      });
+    });
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prestige Voyage | Prestige Voyage</title>
@@ -121,12 +133,18 @@
 </head>
 <body>
   <header>
-  <img src="https://source.unsplash.com/1600x900/?2025-cadillac-escalade" alt="2025 Escalade" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+  <img src="https://source.unsplash.com/1600x900/?chauffeur-open-door-luxury-car" alt="司机为乘客开门" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;">
   <div style="position:relative;z-index:1;text-align:center;background:rgba(0,0,0,0.5);padding:40px 20px;border-radius:10px;">
-    <h1>Prestige Voyage，从此刻开始</h1>
+    <h1 data-lang="en">Prestige Voyage, Your Journey Starts Here</h1>
+<h1 data-lang="zh">Prestige Voyage，从此刻开始</h1>
+<h1 data-lang="es">Prestige Voyage, Tu viaje comienza aquí</h1>
     <div class="btns">
-      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">立即预约</button>
-      <button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">了解更多</button>
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" data-lang="en">Book Now</button>
+<button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" data-lang="zh">立即预约</button>
+<button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" data-lang="es">Reservar Ahora</button>
+      <button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" data-lang="en">Learn More</button>
+<button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" data-lang="zh">了解更多</button>
+<button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" data-lang="es">Saber Más</button>
     </div>
   </div>
 </header>
@@ -134,10 +152,31 @@
   <section id="services">
     <h2>我们的服务</h2>
     <div class="services">
-      <div class="service-item">
-        <h3>2025 凯迪拉克 Escalade 运动加长版</h3>
-<p>全新2025款 Escalade Sport L Extended，兼具力量与奢华，专为尊贵出行打造，适用于高端接送与定制旅程。</p>
-      </div>
+  <div class="service-item">
+    <img src="https://source.unsplash.com/600x400/?black-cadillac-escalade" alt="2025 Escalade 黑色" style="width:100%; border-radius:8px; margin-bottom:15px;">
+    <h3>2025 凯迪拉克 Escalade 运动加长版</h3>
+    <p>全新2025款 Escalade Sport L Extended，兼具力量与奢华，专为尊贵出行打造，适用于高端接送与定制旅程。</p>
+  </div>
+  <div class="service-item">
+    <img src="https://source.unsplash.com/600x400/?black-bmw-5-series" alt="宝马 5 系 黑色" style="width:100%; border-radius:8px; margin-bottom:15px;">
+    <h3>宝马 5 系</h3>
+    <p>商务与日常兼顾，德国精工打造，带来沉稳舒适的出行体验。</p>
+  </div>
+  <div class="service-item">
+    <img src="https://source.unsplash.com/600x400/?black-chevrolet-suburban" alt="雪佛兰 Suburban 黑色" style="width:100%; border-radius:8px; margin-bottom:15px;">
+    <h3>雪佛兰 Suburban（萨博版）</h3>
+    <p>空间充足，稳定安全，适合家庭出行与多乘客需求。</p>
+  </div>
+</div>
+  <div class="service-item">
+    <h3>宝马 5 系</h3>
+    <p>商务与日常兼顾，德国精工打造，带来沉稳舒适的出行体验。</p>
+  </div>
+  <div class="service-item">
+    <h3>雪佛兰 Suburban（萨博版）</h3>
+    <p>空间充足，稳定安全，适合家庭出行与多乘客需求。</p>
+  </div>
+</div>
       <div class="service-item">
         <h3>奔驰 S-Class</h3>
         <p>顶级轿车体验，商务与高端活动首选。</p>
@@ -176,11 +215,11 @@
       <input type="tel" placeholder="电话" required>
       <input type="datetime-local" required>
       <select required>
-        <option>请选择车型</option>
-        <option>2025 凯迪拉克 Escalade 运动加长版</option>
-        <option>奔驰 S-Class</option>
-        <option>林肯 Navigator</option>
-      </select>
+  <option>请选择车型</option>
+  <option>2025 凯迪拉克 Escalade 运动加长版</option>
+  <option>宝马 5 系</option>
+  <option>雪佛兰 Suburban（萨博版）</option>
+</select>
       <textarea placeholder="备注（如出发地、目的地）"></textarea>
       <button type="submit">提交预约</button>
     </form>
