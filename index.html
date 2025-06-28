@@ -1,58 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const datetimeInput = document.getElementById('datetime');
-      if (datetimeInput) {
-        const localeTimeString = new Date().toLocaleTimeString();
-        const is12Hour = localeTimeString.includes('AM') || localeTimeString.includes('PM');
-        if (!is12Hour) {
-          alert('Your browser may be displaying time in 24-hour format. To see AM/PM, please adjust your browser or system time format settings.');
-        }
-      }
-    });
-  </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prestige-Voyage | Luxury Car Services</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #ccc;
+      background-color: #f4f4f4;
     }
     header {
       background-color: #000;
-      color: #ccc;
+      color: white;
       padding: 20px;
       text-align: center;
     }
     nav {
-      background-color: #222;
+      background-color: #333;
       overflow: hidden;
     }
     nav a {
       float: left;
       display: block;
-      color: #ccc;
+      color: white;
       text-align: center;
       padding: 14px 20px;
       text-decoration: none;
     }
     nav a:hover {
-      background-color: #333;
+      background-color: #575757;
     }
     .hero {
       background: url('your-cadillac-image.jpg') no-repeat center center/cover;
-      color: #ccc;
+      color: white;
       padding: 100px 20px;
       text-align: center;
     }
     .section {
       padding: 40px 20px;
-      background: #1a1a1a;
-    }
-    .section h2, .section p, .section li {
-      color: #ccc;
+      background: white;
     }
     .fleet {
       display: flex;
@@ -61,11 +48,10 @@
       justify-content: center;
     }
     .fleet-item {
-      background: #2b2b2b;
-      border: 1px solid #444;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
       padding: 20px;
       width: 300px;
-      color: #ccc;
     }
     form {
       max-width: 500px;
@@ -77,24 +63,21 @@
       margin-bottom: 15px;
       padding: 10px;
       font-size: 16px;
-      background: #000;
-      border: 1px solid #444;
-      color: #ccc;
     }
     button {
-      background: #444;
-      color: #fff;
+      background: #000;
+      color: white;
       padding: 10px;
       border: none;
       font-weight: bold;
       cursor: pointer;
     }
     button:hover {
-      background: #666;
+      background: #333;
     }
     footer {
       background: #000;
-      color: #ccc;
+      color: white;
       padding: 20px;
       text-align: center;
     }
@@ -116,7 +99,7 @@
   <section class="hero">
     <h2>Experience Elegance on the Move</h2>
     <p>Luxury transportation for airport, weddings, and private events.</p>
-    <a href="#booking" style="background:#444;color:#fff;padding:10px 20px;text-decoration:none;font-weight:bold;">Book Now</a>
+    <a href="#booking" style="background:#fff;color:#000;padding:10px 20px;text-decoration:none;font-weight:bold;">Book Now</a>
   </section>
 
   <section id="services" class="section">
@@ -132,7 +115,7 @@
     <h2>Our Fleet</h2>
     <div class="fleet">
       <div class="fleet-item">
-        <h3>2025 Cadillac Escalade ESV (Extended)</h3>
+        <h3>2025 Cadillac Escalade Sport</h3>
         <p>All-black, long-wheelbase luxury SUV with starlight ceiling and minibar.</p>
       </div>
       <div class="fleet-item">
@@ -147,68 +130,110 @@
   </section>
 
   <section id="booking" class="section">
-  <h2>Book a Ride</h2>
-  <form onsubmit="return confirmBookingTime();">
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <label for="datetime">Pickup Date & Time:</label>
-      <input type="datetime-local" id="datetime" name="datetime" required style="cursor: pointer;" step="900" />
-
-      <label for="ampm">Select Time Period:</label>
-      <select id="ampm" name="ampm" required style="cursor: pointer;">
-        <option value="AM">Morning (AM)</option>
-        <option value="PM">Evening (PM)</option>
+    <h2>Book a Ride</h2>
+    <form>
+      <label for="pickup-date">Pickup Date:</label>
+      <input type="date" name="pickup-date" id="pickup-date" required min="" />
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const dateInput = document.getElementById('pickup-date');
+          if (dateInput) {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const localDate = `${yyyy}-${mm}-${dd}`;
+            dateInput.value = localDate;
+            dateInput.min = localDate;
+          }
+        });
+      </script>
+      <label for="pickup-time">Pickup Time:</label>
+      <select name="pickup-time" id="pickup-time" required>
+        <option value="08:00 AM">08:00 AM</option>
+        <option value="08:15 AM">08:15 AM</option>
+        <option value="08:30 AM">08:30 AM</option>
+        <option value="08:45 AM">08:45 AM</option>
+        <option value="09:00 AM">09:00 AM</option>
+        <option value="09:15 AM">09:15 AM</option>
+        <option value="09:30 AM">09:30 AM</option>
+        <option value="09:45 AM">09:45 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="10:15 AM">10:15 AM</option>
+        <option value="10:30 AM">10:30 AM</option>
+        <option value="10:45 AM">10:45 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="11:15 AM">11:15 AM</option>
+        <option value="11:30 AM">11:30 AM</option>
+        <option value="11:45 AM">11:45 AM</option>
+        <option value="12:00 PM">12:00 PM</option>
+        <option value="12:15 PM">12:15 PM</option>
+        <option value="12:30 PM">12:30 PM</option>
+        <option value="12:45 PM">12:45 PM</option>
+        <option value="01:00 PM">01:00 PM</option>
+        <option value="01:15 PM">01:15 PM</option>
+        <option value="01:30 PM">01:30 PM</option>
+        <option value="01:45 PM">01:45 PM</option>
+        <option value="02:00 PM">02:00 PM</option>
+        <option value="02:15 PM">02:15 PM</option>
+        <option value="02:30 PM">02:30 PM</option>
+        <option value="02:45 PM">02:45 PM</option>
+        <option value="03:00 PM">03:00 PM</option>
+        <option value="03:15 PM">03:15 PM</option>
+        <option value="03:30 PM">03:30 PM</option>
+        <option value="03:45 PM">03:45 PM</option>
+        <option value="04:00 PM">04:00 PM</option>
+        <option value="04:15 PM">04:15 PM</option>
+        <option value="04:30 PM">04:30 PM</option>
+        <option value="04:45 PM">04:45 PM</option>
+        <option value="05:00 PM">05:00 PM</option>
+        <option value="05:15 PM">05:15 PM</option>
+        <option value="05:30 PM">05:30 PM</option>
+        <option value="05:45 PM">05:45 PM</option>
+        <option value="06:00 PM">06:00 PM</option>
+        <option value="06:15 PM">06:15 PM</option>
+        <option value="06:30 PM">06:30 PM</option>
+        <option value="06:45 PM">06:45 PM</option>
+        <option value="07:00 PM">07:00 PM</option>
+        <option value="07:15 PM">07:15 PM</option>
+        <option value="07:30 PM">07:30 PM</option>
+        <option value="07:45 PM">07:45 PM</option>
+        <option value="08:00 PM">08:00 PM</option>
       </select>
-
       <input type="text" name="name" placeholder="Full Name" required />
       <input type="tel" name="phone" placeholder="Phone Number" required />
+      
+      
       <input type="text" name="pickup" placeholder="Pickup Location" required />
       <input type="text" name="dropoff" placeholder="Drop-off Location" required />
-
-      <label for="vehicle">Select Vehicle:</label>
       <select name="vehicle" required>
         <option value="">Select Vehicle</option>
-        <option value="Escalade">Cadillac Escalade ESV (Extended)</option>
+        <option value="Escalade">Cadillac Escalade</option>
         <option value="Suburban">Chevrolet Suburban</option>
         <option value="BMW">BMW 5 Series</option>
       </select>
-
-      <label for="service">Service Type:</label>
       <select name="service" required>
         <option value="">Service Type</option>
         <option value="airport">Airport Transfer</option>
         <option value="wedding">Wedding</option>
         <option value="charter">Private Charter</option>
       </select>
-
-      <input type="number" name="hours" placeholder="Number of Hours (if hourly)" min="1" max="24" />
       <textarea name="notes" placeholder="Additional Notes (optional)"></textarea>
       <button type="submit">Submit Booking</button>
-    </div>
-  </form>
-</section>
+    </form>
+  </section>
 
   <section id="contact" class="section">
     <h2>Contact Us</h2>
-    <p><strong>Contact Person:</strong> ALVES</p>
     <p><strong>Phone:</strong> (323) 470-1607</p>
     <p><strong>Email:</strong> superthomas615@gmail.com</p>
     <p><strong>WeChat:</strong> HaHaAlves</p>
-    <p><strong>Service Area:</strong> Los Angeles County, Orange County, San Bernardino County</p>
-    <p><strong>Follow us on:</strong> Instagram | WhatsApp </p>
+    <p><strong>Service Area:</strong> Los Angeles, Beverly Hills, LAX Airport</p>
+    <p><strong>Follow us on:</strong> Instagram | WhatsApp | TikTok</p>
   </section>
 
   <footer>
     <p>&copy; 2025 Prestige-Voyage. All rights reserved.</p>
   </footer>
-<script>
-  function confirmBookingTime() {
-    const datetime = document.getElementById('datetime').value;
-    const hour = new Date(datetime).getHours();
-    const ampmSelect = document.getElementById('ampm');
-    const ampm = ampmSelect ? ampmSelect.value : (hour < 12 ? 'AM' : 'PM');
-    return confirm(`Please confirm your pickup time:
-${datetime} ${ampm}`);
-  }
-</script>
 </body>
 </html>
