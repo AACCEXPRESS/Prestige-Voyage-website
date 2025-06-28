@@ -1,0 +1,62 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+export default function BookingPage() {
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl font-bold mb-2">Prestige-Voyage</h1>
+        <p className="text-lg text-gray-600">Airport Transfers, Private Rentals, Weddings</p>
+      </header>
+
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        {[
+          {
+            name: "2025 All-Black Cadillac Escalade Sport",
+            image: "/images/escalade.jpg"
+          },
+          {
+            name: "All-Black Chevrolet Suburban Premium",
+            image: "/images/suburban.jpg"
+          },
+          {
+            name: "All-Black BMW 5 Series",
+            image: "/images/bmw5.jpg"
+          }
+        ].map((car, i) => (
+          <Card key={i} className="shadow-xl">
+            <img src={car.image} alt={car.name} className="w-full h-48 object-cover rounded-t-xl" />
+            <CardContent className="p-4">
+              <h2 className="font-semibold text-lg mb-1">{car.name}</h2>
+            </CardContent>
+          </Card>
+        ))}
+      </section>
+
+      <section className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md">
+        <h2 className="text-2xl font-semibold mb-4">Reserve Your Luxury Ride</h2>
+        <form className="space-y-4">
+          <Input placeholder="Your Full Name" required />
+          <Input placeholder="Phone Number (e.g. 323-470-1607)" required defaultValue="323-470-1607" />
+          <Input placeholder="Email Address" type="email" required />
+          <Input placeholder="Pickup Date & Time" type="datetime-local" required />
+          <Input placeholder="Pickup Location (e.g. LAX Airport, Hotel)" required />
+          <Input placeholder="Destination or Event (e.g. Wedding Venue)" required />
+          <select className="w-full p-2 border rounded">
+            <option value="">Select Vehicle</option>
+            <option value="escalade">2025 Cadillac Escalade Sport (All Black)</option>
+            <option value="suburban">Chevrolet Suburban Premium (All Black)</option>
+            <option value="bmw5">BMW 5 Series (All Black)</option>
+          </select>
+          <Button type="submit" className="w-full">Submit Reservation</Button>
+        </form>
+      </section>
+
+      <footer className="mt-16 text-center text-gray-500">
+        <p>&copy; 2025 Prestige-Voyage | Phone: 323-470-1607</p>
+      </footer>
+    </div>
+  );
+}
